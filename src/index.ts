@@ -44,11 +44,11 @@ type DomainsEnv = Cloudflare.Env & {
  * }
  */
 function isAllowedTarget(url: URL, env: DomainsEnv): boolean {
-	if (env.BLACKLISTED_DOMAINS?.includes(url.hostname)) {
+	if (env.BLACKLISTED_DOMAINS?.length > 0 && env.BLACKLISTED_DOMAINS?.includes(url.hostname)) {
 		return false;
 	}
 
-	if (env.WHITELISTED_DOMAINS?.includes(url.hostname) === false) {
+	if (env.WHITELISTED_DOMAINS?.length > 0 && env.WHITELISTED_DOMAINS?.includes(url.hostname) === false) {
 		return false;
 	}
 
